@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *fp;
+    char name[300];
+
+    // Writing data into the file
+    fp = fopen("student.txt", "w");
+
+    if (fp == NULL)
+    {
+        printf("File cannot be opened for writing");
+        return 1;
+    }
+
+    fprintf(fp, "Welcome to C Programming\n");
+    fprintf(fp, "File Handling in C");
+
+    fclose(fp);
+
+    printf("Data written successfully\n\n");
+
+    // Reading data from the file
+    fp = fopen("student.txt", "r");
+
+    if (fp == NULL)
+    {
+        printf("File cannot be opened for reading");
+        return 1;
+    }
+
+    printf("File Contents:\n");
+
+    while (fgets(name, sizeof(name), fp) != NULL)
+    {
+        printf("%s", name);
+    }
+
+    fclose(fp);
+
+    return 0;
+}
